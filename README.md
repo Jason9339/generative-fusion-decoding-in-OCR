@@ -59,6 +59,20 @@ To run the script, the following three arguments are required:
 python benchmarks/run_single_file.py --model_name gfd --setting asr-zhtw --audio_file_path demo_examples/zh_news.wav --result_output_path output.txt
 ```
 
+For OCR inference you can use:
+```
+python benchmarks/run_ocr_single_file.py --image_file_path path/to/image.png --result_output_path output.txt
+```
+
+### OCR Benchmark Datasets
+Common English OCR datasets such as `iiit5k`, `svt`, `icdar2013`, and `iam` can be evaluated using:
+```
+python benchmarks/run_ocr_benchmark.py --dataset_name iiit5k --output_dir ocr_result/
+```
+The script accepts any dataset identifier from the Hugging Face Hub and assumes `image` and `text` columns. Use `--image_column_name` or `--text_column_name` to override.
+
+更多中文說明與 OCR 相關檔案修改方式可參考 [docs/ocr_zh.md](docs/ocr_zh.md)。
+
 ### On Benchmark Dataset
 To run the benchmark dataset, the following four arguments are required:
 - `--dataset_name`: Each dataset we tested has a short version name for easy reference. When you run  `benchmarks/run_benchmark.py`, the script will automatically download the specified dataset from Hugging Face. Below is a list of short version names of datasets used.
