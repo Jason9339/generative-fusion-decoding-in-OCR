@@ -10,7 +10,11 @@ def parse_args():
     parser.add_argument('--model_name', type=str, help='The model for testing the benchmark dataset')
     parser.add_argument('--setting', type=str, help='benchmark dataset settings for specified model')
     parser.add_argument('--audio_file_path', type=str, help='Path to the audio file sample')
-    parser.add_argument('--result_output_path', type=str, help='Path to save dataset with predictions from the model')
+    parser.add_argument(
+        '--result_output_path',
+        type=str,
+        help='Path to save dataset with predictions from the model in JSON format'
+    )
     return parser.parse_args()
 
 def main():

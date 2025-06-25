@@ -9,7 +9,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run GFD OCR on a single image.")
     parser.add_argument('--image_file_path', type=str, required=True, help='Path to the image file')
     parser.add_argument('--config', type=str, default='config_files/model/gfd-ocr-en.yaml', help='Path to config YAML')
-    parser.add_argument('--result_output_path', type=str, required=True, help='Path to save result text')
+    parser.add_argument(
+        '--result_output_path',
+        type=str,
+        required=True,
+        help='Path to save result JSON'
+    )
     return parser.parse_args()
 
 
