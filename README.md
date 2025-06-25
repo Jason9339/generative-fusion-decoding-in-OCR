@@ -52,16 +52,17 @@ To run the script, the following three arguments are required:
     + `asr-en`: The complete version of our method's configuration for testing on an English sample.
     + `asr-en-lmoff`: Uses our custom beam search method on the ASR model, neglecting the output from the LLM (fusing_r = 0) for an English dataset sample.
 - `--audio_file_path`: The path to the audio file that you want to process.
-- `--result_output_path`: The path where the output result will be saved.
+- `--result_output_path`: Path to save the result as a JSON file.
+  The script writes the recognition result in JSON format to this file.
 
 **Example Usage**
 ```
-python benchmarks/run_single_file.py --model_name gfd --setting asr-zhtw --audio_file_path demo_examples/zh_news.wav --result_output_path output.txt
+python benchmarks/run_single_file.py --model_name gfd --setting asr-zhtw --audio_file_path demo_examples/zh_news.wav --result_output_path output.json
 ```
 
 For OCR inference you can use:
 ```
-python benchmarks/run_ocr_single_file.py --image_file_path path/to/image.png --result_output_path output.txt
+python benchmarks/run_ocr_single_file.py --image_file_path path/to/image.png --result_output_path output.json
 ```
 
 ### OCR Benchmark Datasets
