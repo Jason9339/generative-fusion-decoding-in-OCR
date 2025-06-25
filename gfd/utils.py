@@ -16,5 +16,6 @@ def process_config(file_path, args=argparse.Namespace()):
 
 
 def combine_config(config1, config2):
-    CombinedConfig = namedtuple('Config', config1._fields + config2._fields)
-    return CombinedConfig(*(config1 + config2))
+    """Merge two config namedtuples, preferring values from ``config2``."""
+    config = {**config1._asdict(), **config2._asdict()}
+    return namedtuple('Config', config.keys())(**config)
