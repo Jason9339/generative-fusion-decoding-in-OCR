@@ -9,7 +9,7 @@
    python -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
-   python setup.py install
+   pip install -e .
    ```
 
 2. 下載與執行模型需要較新的 `torch` 版本及 `transformers` 套件，若安裝過程有問題，請先確認 CUDA 驅動與硬體資源。

@@ -29,9 +29,9 @@ We introduce "Generative Fusion Decoding" (GFD), a novel shallow fusion framewor
    ```
    pip install -r requirements.txt
    ```
-4. **Run the setup script:**
+4. **Install this package in editable mode:**
    ```
-   python setup.py install
+   pip install -e .
    ```
 
 ## Run GFD
