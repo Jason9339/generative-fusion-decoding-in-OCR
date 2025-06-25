@@ -21,7 +21,7 @@
 
 若需手動下載，可使用 `datasets` 套件：
 ```bash
-datasets-cli download {資料集名稱}
+datasets download <資料集名稱>
 ```
 
 下載完成後，資料集會儲存在 `~/.cache/huggingface/datasets/` 目錄下。
