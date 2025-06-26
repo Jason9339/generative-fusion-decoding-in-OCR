@@ -69,6 +69,18 @@ class BreezperOCR:
 
     def _get_prefix_decoding_ids(self, asr_prompt, llm_prompt):
         asr_prefix_decoding_ids = self.asr_tokenizer(asr_prompt, add_special_tokens=False).input_ids
+        # TrOCR expects the decoder input to start with a special BOS token. When
+        # no prompt is provided the tokenized result could be an empty list which
+        # leads to a zero-length tensor passed to ``VisionEncoderDecoderModel``
+        # and causes a runtime error during ``view``.  Always prepend the
+        # ``decoder_start_token_id`` so there is at least one token.
+        decoder_start_id = self.recognizer.config.decoder_start_token_id
+        if decoder_start_id is not None:
+            asr_prefix_decoding_ids = [decoder_start_id] + asr_prefix_decoding_ids
+        elif not asr_prefix_decoding_ids:
+            # Fallback to 0 if ``decoder_start_token_id`` is not defined. This is
+            # the default BOS token id for many seq2seq models.
+            asr_prefix_decoding_ids = [0]
         llm_prefix_decoding_ids = self.llm_tokenizer.tokenize_from_byte(
             self.llm_prefix_template.format(prompt=llm_prompt).encode("utf8")
         )
